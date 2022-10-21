@@ -25,7 +25,6 @@ func Encrypt(key []byte, decrypted []byte) ([]byte, error) {
 	encrypted := gcm.Seal(nonce, nonce, decrypted, nil)
 
 	return encrypted, nil
-
 }
 
 // MustEncrypt calls Encrypt function and panics on errors.
@@ -37,7 +36,6 @@ func MustEncrypt(key []byte, decrypted []byte) []byte {
 	}
 
 	return encrypted
-
 }
 
 // Decrypt decrypts encrypted data with provided key using AES.
@@ -58,7 +56,6 @@ func Decrypt(key []byte, encrypted []byte) ([]byte, error) {
 	}
 
 	return decrypted, nil
-
 }
 
 // MustDecrypt calls Decrypt function and panics on errors.
@@ -70,7 +67,6 @@ func MustDecrypt(key []byte, encrypted []byte) []byte {
 	}
 
 	return decrypted
-
 }
 
 func createGCM(key []byte) (cipher.AEAD, error) {
@@ -87,7 +83,6 @@ func createGCM(key []byte) (cipher.AEAD, error) {
 	}
 
 	return gcm, nil
-
 }
 
 func generateNonce(size int) ([]byte, error) {
@@ -100,5 +95,4 @@ func generateNonce(size int) ([]byte, error) {
 	}
 
 	return nonce, nil
-
 }

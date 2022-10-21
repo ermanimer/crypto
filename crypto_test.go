@@ -27,7 +27,6 @@ func TestEncryptAndDecrypt(t *testing.T) {
 		t.Error("decrypted != data")
 
 	}
-
 }
 
 func TestEncryptWithShortKey(t *testing.T) {
@@ -52,7 +51,6 @@ func TestEncryptWithShortKey(t *testing.T) {
 	}()
 
 	_ = MustEncrypt(key, data)
-
 }
 
 func TestDecryptWithShortKey(t *testing.T) {
@@ -77,7 +75,6 @@ func TestDecryptWithShortKey(t *testing.T) {
 	}()
 
 	_ = MustDecrypt(key, data)
-
 }
 
 func generateRandomData(size int) ([]byte, error) {
@@ -90,7 +87,6 @@ func generateRandomData(size int) ([]byte, error) {
 	}
 
 	return data, nil
-
 }
 
 func isEqual(a []byte, b []byte) bool {
@@ -108,5 +104,4 @@ func isEqual(a []byte, b []byte) bool {
 	}
 
 	return true
-
 }
