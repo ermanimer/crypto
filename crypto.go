@@ -4,8 +4,7 @@ package crypto
 import (
 	"crypto/aes"
 	"crypto/cipher"
-	"math/rand"
-	"time"
+	"crypto/rand"
 )
 
 // Encrypt encrypts provided data with provided key using AES.
@@ -88,10 +87,9 @@ func createGCM(key []byte) (cipher.AEAD, error) {
 func generateNonce(size int) ([]byte, error) {
 	nonce := make([]byte, size)
 
-	rand.Seed(time.Now().UnixNano())
-	if _, err := rand.Read(nonce); err != nil {
+	_, err := rand.Read(nonce)
+	if err != nil {
 		return nil, err
-
 	}
 
 	return nonce, nil
