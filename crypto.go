@@ -12,13 +12,11 @@ func Encrypt(key []byte, decrypted []byte) ([]byte, error) {
 	gcm, err := createGCM(key)
 	if err != nil {
 		return nil, err
-
 	}
 
 	nonce, err := generateNonce(gcm.NonceSize())
 	if err != nil {
 		return nil, err
-
 	}
 
 	encrypted := gcm.Seal(nonce, nonce, decrypted, nil)
@@ -31,7 +29,6 @@ func MustEncrypt(key []byte, decrypted []byte) []byte {
 	encrypted, err := Encrypt(key, decrypted)
 	if err != nil {
 		panic(err.Error())
-
 	}
 
 	return encrypted
@@ -42,7 +39,6 @@ func Decrypt(key []byte, encrypted []byte) ([]byte, error) {
 	gcm, err := createGCM(key)
 	if err != nil {
 		return nil, err
-
 	}
 
 	nonceSize := gcm.NonceSize()
@@ -51,7 +47,6 @@ func Decrypt(key []byte, encrypted []byte) ([]byte, error) {
 	decrypted, err := gcm.Open(nil, nonce, encrypted, nil)
 	if err != nil {
 		return nil, err
-
 	}
 
 	return decrypted, nil
@@ -62,7 +57,6 @@ func MustDecrypt(key []byte, encrypted []byte) []byte {
 	decrypted, err := Decrypt(key, encrypted)
 	if err != nil {
 		panic(err.Error())
-
 	}
 
 	return decrypted
@@ -72,13 +66,11 @@ func createGCM(key []byte) (cipher.AEAD, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
 		return nil, err
-
 	}
 
 	gcm, err := cipher.NewGCM(block)
 	if err != nil {
 		return nil, err
-
 	}
 
 	return gcm, nil
